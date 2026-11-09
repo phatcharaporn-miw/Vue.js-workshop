@@ -56,11 +56,19 @@
       </v-data-table>
     </v-card>
 
-    <v-dialog v-model="formDialog" max-width="600" persistent>
-      <v-card>
-        <v-card-title>{{ editingUser ? 'แก้ไขผู้ใช้' : 'เพิ่มผู้ใช้' }}</v-card-title>
-        <v-card-text>
-          <v-alert v-if="formError" type="error" dense text class="mb-4">
+    <v-dialog v-model="formDialog" max-width="650" persistent>
+      <v-card flat class="ani-dialog">
+        <div class="ani-dialog-head">
+          <div class="ani-dot">
+            <v-icon>{{ editingUser ? 'mdi-pencil' : 'mdi-plus' }}</v-icon>
+          </div>
+          <div>
+            <div class="ani-dialog-title">{{ editingUser ? 'แก้ไขผู้ใช้' : 'เพิ่มผู้ใช้' }}</div>
+            <div class="ani-dialog-sub">กรอกข้อมูลผู้ใช้ให้ครบถ้วนก่อนบันทึก</div>
+          </div>
+        </div>
+        <v-card-text class="pa-6">
+          <v-alert v-if="formError" type="error" dense text class="mb-5">
             {{ formError }}
           </v-alert>
           <v-form ref="userForm" @submit.prevent="saveUser">
@@ -69,6 +77,7 @@
               label="ชื่อผู้ใช้"
               outlined
               dense
+              class="ani-field"
               :rules="[requiredRule]"
               required
             />
@@ -78,6 +87,7 @@
               type="password"
               outlined
               dense
+              class="ani-field"
               :hint="editingUser ? 'เว้นว่างหากไม่ต้องการเปลี่ยนรหัสผ่าน' : ''"
               :persistent-hint="Boolean(editingUser)"
               :rules="editingUser ? [] : [requiredRule]"
@@ -90,6 +100,7 @@
                   label="ชื่อ"
                   outlined
                   dense
+                  class="ani-field"
                   :rules="[requiredRule]"
                   required
                 />
@@ -100,6 +111,7 @@
                   label="นามสกุล"
                   outlined
                   dense
+                  class="ani-field"
                   :rules="[requiredRule]"
                   required
                 />
@@ -110,6 +122,7 @@
                   label="เพศ"
                   outlined
                   dense
+                  class="ani-field"
                 />
               </v-col>
               <v-col cols="12" sm="6">
@@ -121,6 +134,7 @@
                   step="1"
                   outlined
                   dense
+                  class="ani-field"
                   :rules="[requiredRule, ageRule]"
                   required
                 />
@@ -141,16 +155,23 @@
       </v-card>
     </v-dialog>
 
-    <v-dialog v-model="deleteDialog" max-width="420">
-      <v-card>
-        <v-card-title>ยืนยันการลบผู้ใช้</v-card-title>
-        <v-card-text>
+    <v-dialog v-model="deleteDialog" max-width="430">
+      <v-card flat class="ani-dialog">
+        <div class="text-center pt-7 pb-3">
+          <div class="ani-delete-icon"><v-icon color="error" size="32">mdi-trash-can-outline</v-icon></div>
+          <div class="text-h6 font-weight-bold">ยืนยันการลบผู้ใช้</div>
+        </div>
+
+        <v-card-text class="text-center px-6 pb-5">
           ต้องการลบบัญชี {{ userToDelete && userToDelete.username }} ใช่หรือไม่?
+          <div class="text-caption ani-muted mt-2">การดำเนินการนี้อาจไม่สามารถย้อนกลับได้</div>
         </v-card-text>
-        <v-card-actions>
-          <v-spacer />
-          <v-btn text :disabled="deleting" @click="deleteDialog = false">ยกเลิก</v-btn>
-          <v-btn color="error" :loading="deleting" :disabled="deleting" @click="deleteUser">
+
+        <v-card-actions class="px-6 pb-6">
+          <v-btn outlined class="btn-pill-outline text-none flex-grow-1" :disabled="deleting" @click="deleteDialog = false">
+            ยกเลิก
+          </v-btn>
+          <v-btn color="error" depressed class="text-none flex-grow-1" :loading="deleting" :disabled="deleting" @click="deleteUser">
             ลบผู้ใช้
           </v-btn>
         </v-card-actions>
