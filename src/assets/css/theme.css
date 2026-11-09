@@ -1,0 +1,698 @@
+@import url("https://fonts.googleapis.com/css2?family=Anton&family=Kanit:wght@600;800&family=Manrope:wght@400;500;700;800&family=Noto+Sans+Thai:wght@400;500;700&display=swap");
+
+:root {
+  --fire: #ff4b1f;
+  --fire-dark: #d93a12;
+  --black: #000;
+  --panel: #121212;
+  --panel-2: #1b1b1b;
+  --line: #2a2a2a;
+  --paper: #fff;
+  --muted: #9a9a9a;
+  --display: "Anton", "Kanit", sans-serif;
+  --orange: var(--fire);
+  --peach-soft: var(--line);
+  --ink: #fff;
+  --grad-pill: linear-gradient(var(--fire), var(--fire));
+  --grad-panel: linear-gradient(var(--fire), var(--fire));
+  --shadow-card: none;
+}
+
+.v-application,
+.v-application [class*="text-"] {
+  font-family: "Manrope", "Noto Sans Thai", sans-serif !important;
+}
+.v-application.theme--dark {
+  background: var(--black) !important;
+  color: #fff;
+}
+.store-main {
+  background: var(--black) !important;
+}
+.v-application .rounded-xl,
+.v-application .rounded-lg,
+.v-application .rounded {
+  border-radius: 2px !important;
+}
+.v-card {
+  border-radius: 0 !important;
+}
+.v-chip {
+  border-radius: 2px !important;
+}
+
+.ani-display {
+  font-family: var(--display) !important;
+  font-weight: 700;
+  font-synthesis: none;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+}
+
+/* ---------- ปุ่ม ---------- */
+.v-btn {
+  letter-spacing: 0;
+  font-weight: 700;
+  border-radius: 2px !important;
+}
+.v-btn.primary:not(.v-btn--outlined):not(.v-btn--text),
+.login-button {
+  background: var(--fire) !important;
+  color: #fff !important;
+  box-shadow: none !important;
+}
+.v-btn.primary:not(.v-btn--disabled):hover {
+  background: var(--fire-dark) !important;
+}
+.v-btn.btn-pill-outline {
+  background: transparent !important;
+  color: #fff !important;
+  border: 1px solid #fff !important;
+}
+.v-btn.btn-pill-outline:hover {
+  border-color: var(--fire) !important;
+  color: var(--fire) !important;
+}
+
+.store-navbar {
+  background: var(--black) !important;
+  border-bottom: 0 !important;
+}
+.store-navbar .v-toolbar__content {
+  padding: 0 32px !important;
+}
+.ani-nav-grid {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  width: 100%;
+}
+.ani-brand,
+.ani-nav-link,
+.ani-btn-white {
+  font-family: var(--display);
+  font-synthesis: none;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+.ani-brand {
+  font-size: 28px;
+  line-height: 1;
+  color: #fff;
+  letter-spacing: 0.02em;
+}
+.ani-nav-links {
+  display: flex;
+  gap: 30px;
+}
+.ani-nav-link {
+  font-size: 15px;
+  letter-spacing: 0.05em;
+  color: #fff;
+  padding: 4px 0;
+}
+.ani-nav-link:hover,
+.ani-nav-link.is-active {
+  color: var(--fire);
+}
+.ani-nav-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 14px;
+}
+.ani-icon-box {
+  width: 34px;
+  height: 34px;
+  min-width: 34px !important;
+  padding: 0 !important;
+  border: 1px solid #fff;
+  border-radius: 2px !important;
+}
+.ani-icon-box:hover {
+  border-color: var(--fire);
+}
+.v-btn.ani-btn-white {
+  height: 38px !important;
+  padding: 0 44px !important;
+  font-size: 15px;
+  letter-spacing: 0.05em;
+  background: #fff !important;
+  color: #000 !important;
+  box-shadow: none !important;
+  border-radius: 2px !important;
+}
+.v-btn.ani-btn-white:hover {
+  background: var(--fire) !important;
+  color: #fff !important;
+}
+.profile-menu {
+  border-radius: 0 !important;
+  border: 1px solid var(--line);
+}
+
+.ani-catalog {
+  background: var(--black);
+  padding-top: 4px;
+}
+.ani-hero {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+  gap: 16px;
+}
+.ani-mega {
+  flex: 1;
+  min-width: 0;
+  color: var(--fire);
+  text-transform: uppercase;
+  white-space: nowrap;
+  font-family: var(--display);
+  font-synthesis: none;
+  font-weight: 700;
+  font-size: 28rem;
+  line-height: 1;
+  letter-spacing: 0.005em;
+}
+.ani-hero-img {
+  display: block;
+  flex: 0 0 30%;
+  width: 30%;
+  object-fit: contain;
+}
+.ani-catalog-top {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 40px;
+  align-items: end;
+}
+.ani-catalog-note {
+  color: #fff;
+  font-size: 18px;
+  line-height: 1.55;
+  margin: 0 0 22px;
+}
+.ani-search .v-input__slot:before {
+  border-color: #fff !important;
+}
+.ani-search input {
+  font-size: 18px;
+}
+
+.ani-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin: 45px 0 40px;
+}
+.ani-tab {
+  background: none;
+  border: 0;
+  cursor: pointer;
+  padding: 6px 4px;
+  margin-right: 14px;
+  font: 700 20px "Manrope", "Noto Sans Thai", sans-serif;
+  color: #fff;
+  letter-spacing: 0.04em;
+}
+.ani-tab:hover {
+  color: var(--fire);
+}
+.ani-tab.is-active {
+  color: var(--fire);
+  box-shadow: inset 0 -2px 0 var(--fire);
+}
+.ani-count {
+  margin-left: auto;
+  padding: 8px 16px;
+  background: var(--fire);
+  color: #fff;
+  font-weight: 800;
+  font-size: 16px;
+  border-radius: 2px;
+}
+
+.product-column {
+  display: flex;
+  margin-bottom: 45px;
+}
+.ani-grid {
+  margin: 0 -10px;
+}
+.ani-grid > .col {
+  padding: 10px;
+}
+
+.ani-pager {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin: 44px 0 56px;
+}
+.ani-pager .v-pagination__item,
+.ani-pager .v-pagination__navigation {
+  border-radius: 2px !important;
+  box-shadow: none !important;
+  background: transparent !important;
+  color: #fff !important;
+  border: 1px solid var(--line);
+  min-width: 34px;
+  height: 34px;
+  font-weight: 700;
+}
+.ani-pager .v-pagination__item--active {
+  background: var(--fire) !important;
+  border-color: var(--fire);
+}
+
+.ani-torn {
+  height: 34px;
+  background: #fff;
+  clip-path: polygon(
+    0% 100%,
+    0% 55%,
+    2.9% 24%,
+    6.1% 18%,
+    8.4% 49%,
+    10.8% 52%,
+    13.2% 47%,
+    15.9% 20%,
+    19.1% 19%,
+    21.8% 50%,
+    25% 67%,
+    28.5% 75%,
+    31.2% 55%,
+    34.7% 18%,
+    38.3% 40%,
+    40.6% 29%,
+    42.9% 69%,
+    45.4% 41%,
+    47.9% 22%,
+    51.4% 50%,
+    55.5% 26%,
+    58% 51%,
+    61.6% 38%,
+    64.1% 60%,
+    66.4% 18%,
+    70% 46%,
+    73.8% 42%,
+    77.8% 44%,
+    81.3% 44%,
+    84.4% 30%,
+    88.4% 59%,
+    92.4% 20%,
+    95.9% 48%,
+    99.2% 36%,
+    100% 33%,
+    100% 100%
+  );
+}
+.ani-footer.catalog-footer::before {
+  display: none;
+}
+
+/* ---------- ช่องค้นหา / empty ---------- */
+.empty-state {
+  background: var(--panel) !important;
+  border: 1px dashed var(--line) !important;
+}
+.empty-icon {
+  width: 84px;
+  height: 84px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--fire);
+  border-radius: 2px;
+}
+.empty-icon .v-icon {
+  color: var(--fire) !important;
+}
+.section-title {
+  font-family: var(--display);
+  font-synthesis: none;
+  font-weight: 700;
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+/* ---------- หน้า detail ---------- */
+.detail-page {
+  min-height: calc(100vh - 76px);
+  background: var(--black);
+}
+.detail-image-wrap {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 0;
+  box-shadow: none;
+}
+.glass-card {
+  background: var(--panel) !important;
+  border: 1px solid var(--line) !important;
+  border-left: 4px solid var(--fire) !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  backdrop-filter: none;
+}
+.price-badge,
+.rating-badge {
+  display: inline-block;
+  padding: 6px 16px;
+  background: var(--fire);
+  color: #fff;
+  font-weight: 800;
+  font-size: 1.3rem;
+  border-radius: 2px;
+  box-shadow: none;
+}
+.detail-status {
+  color: var(--fire);
+  font-weight: 700;
+}
+
+.v-text-field--rounded > .v-input__control > .v-input__slot,
+.v-text-field--outlined fieldset {
+  border-radius: 2px !important;
+}
+.v-text-field--outlined fieldset {
+  border-color: var(--line);
+}
+
+@media (max-width: 960px) {
+  .ani-catalog-top {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+/* =====================================================================
+   ฝั่งแอดมิน (Admin) 
+   ===================================================================== */
+
+.ani-drawer.v-navigation-drawer {
+  background: var(--black) !important;
+  border-right: 1px solid var(--line) !important;
+}
+.ani-drawer-head {
+  padding: 22px 20px;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.ani-drawer-logo {
+  width: 44px;
+  height: 44px;
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--fire);
+  border-radius: 2px;
+}
+.ani-drawer-title {
+  font-family: var(--display);
+  font-synthesis: none;
+  font-weight: 700;
+  font-size: 1.6rem;
+  line-height: 1.1;
+  text-transform: uppercase;
+  color: #fff;
+}
+.ani-drawer-sub {
+  font-size: 16px;
+  color: var(--muted);
+  margin-top: 2px;
+}
+.ani-drawer .v-list-item {
+  border-radius: 0 !important;
+  min-height: 46px;
+  color: #fff !important;
+}
+.ani-drawer .v-list-item .v-icon {
+  color: var(--muted);
+}
+.ani-drawer .v-list-item:hover {
+  background: var(--panel-2);
+}
+.ani-drawer .v-list-item--active {
+  color: var(--fire) !important;
+  background: rgba(255, 75, 31, 0.1);
+  box-shadow: inset 3px 0 0 var(--fire);
+}
+.ani-drawer .v-list-item--active .v-icon {
+  color: var(--fire) !important;
+}
+.ani-drawer .v-list-item--active::before {
+  opacity: 0 !important;
+}
+.ani-drawer .v-list-item__title {
+  font-weight: 700;
+  font-size: 16px !important;
+}
+
+.admin-main {
+  background: var(--black) !important;
+}
+.admin-main h1.text-h4 {
+  font-family: var(--display) !important;
+  font-synthesis: none;
+  font-weight: 700 !important;
+  font-size: clamp(36px, 5vw, 64px) !important;
+  line-height: 1 !important;
+  text-transform: uppercase;
+  color: var(--fire);
+}
+.admin-main .grey.lighten-5,
+.admin-main .grey.lighten-4 {
+  background-color: var(--panel-2) !important;
+}
+.admin-main .v-card--outlined {
+  background: var(--panel) !important;
+  border-color: var(--line) !important;
+}
+.admin-main .v-dialog {
+  border-radius: 0 !important;
+  border: 1px solid var(--line);
+}
+.theme--dark.v-data-table {
+  background: var(--panel) !important;
+  border: 1px solid var(--line);
+}
+.theme--dark.v-data-table > .v-data-table__wrapper > table > thead > tr > th {
+  color: var(--muted) !important;
+  font-weight: 800;
+  font-size: 16px;
+  background: var(--panel-2);
+  border-bottom: 1px solid var(--line) !important;
+}
+.theme--dark.v-data-table > .v-data-table__wrapper > table > tbody > tr:hover {
+  background: var(--panel-2) !important;
+}
+.theme--dark.v-data-table > .v-data-table__wrapper > table > tbody > tr > td {
+  border-bottom: 1px solid var(--line) !important;
+}
+
+/* ---- Admin orders ---- */
+.ani-buyer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--line);
+}
+.ani-buyer .v-icon {
+  color: var(--fire);
+}
+.ani-buyer-name {
+  font-weight: 700;
+  color: #fff;
+}
+.ani-po {
+  font-family: var(--display);
+  font-synthesis: none;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+}
+
+/* =====================================================================
+   หน้าจัดการสินค้า (Admin products)
+   ===================================================================== */
+.ani-stat {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 22px;
+}
+.ani-stat .ani-dot {
+  width: 48px;
+  height: 48px;
+}
+.ani-stat .label {
+  color: var(--muted);
+  font-size: 16px;
+}
+.ani-stat .num {
+  font-family: var(--display);
+  font-synthesis: none;
+  font-size: 2.8rem;
+  line-height: 1;
+  color: var(--fire);
+}
+.ani-stat .unit {
+  font-family: "Manrope", "Noto Sans Thai", sans-serif;
+  font-size: 16px;
+  color: var(--muted);
+  margin-left: 4px;
+}
+.ani-stat.is-alert .num {
+  color: #ff5252;
+}
+
+.ani-table-wrap .theme--dark.v-data-table {
+  border: 0;
+  background: transparent !important;
+}
+.ani-table-wrap .v-data-footer {
+  border-top: 1px solid var(--line) !important;
+  color: var(--muted);
+}
+.ani-thumb-box {
+  width: 40px;
+  height: 40px;
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--fire);
+  border-radius: 2px;
+}
+.ani-thumb-box .v-icon {
+  color: var(--fire) !important;
+}
+.ani-name {
+  font-weight: 700;
+  color: #fff;
+}
+.ani-stock-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 10px;
+  font-weight: 800;
+  font-size: 16px;
+  border: 1px solid;
+  border-radius: 2px;
+}
+.ani-stock-chip.ok {
+  color: #3ddc84;
+  border-color: #3ddc84;
+}
+.ani-stock-chip.low {
+  color: var(--fire);
+  border-color: var(--fire);
+}
+.ani-stock-chip.out {
+  color: #ff5252;
+  border-color: #ff5252;
+  background: rgba(255, 82, 82, 0.08);
+}
+
+/* ---- Dialog ---- */
+.v-dialog {
+  border-radius: 0 !important;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.7) !important;
+}
+.ani-dialog {
+  background: var(--panel) !important;
+  border: 1px solid var(--line) !important;
+  border-radius: 0 !important;
+}
+.ani-dialog-head {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 22px 24px;
+  background: var(--fire);
+  color: #fff;
+}
+.ani-dialog-head .ani-dot {
+  background: #000;
+  width: 46px;
+  height: 46px;
+}
+.ani-dialog-title {
+  font-family: var(--display);
+  font-synthesis: none;
+  font-weight: 700;
+  font-size: 1.6rem;
+  text-transform: uppercase;
+  line-height: 1.1;
+}
+.ani-dialog-sub {
+  font-size: 16px;
+  opacity: 0.92;
+}
+.ani-form-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 14px;
+  font-weight: 800;
+  color: #fff;
+}
+.ani-form-title .v-icon {
+  color: var(--fire) !important;
+}
+.ani-delete-icon {
+  width: 68px;
+  height: 68px;
+  margin: 0 auto 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #ff5252;
+  border-radius: 2px;
+}
+
+/* =====================================================================
+   Footer (กระดาษขาวขอบฉีก ต่อจากพื้นดำ)
+   ===================================================================== */
+.ani-shell { min-height: 100vh; display: flex; flex-direction: column; }
+.ani-shell > .v-main { flex: 1 0 auto; }
+ 
+.ani-footer { position: relative; background: #fff; color: #000; padding-top: 84px; }
+.ani-footer::before {
+  content: ''; position: absolute; left: 0; right: 0; top: -1px; height: 44px; background: var(--black);
+  clip-path: polygon(0% 0%, 0% 40%, 2.6% 60%, 6.1% 74%, 8.7% 57%, 12.2% 37%, 14.2% 57%, 16.8% 64%, 20.2% 31%, 22.8% 34%, 24.6% 76%, 28.1% 65%, 29.8% 50%, 33.5% 66%, 36.8% 66%, 38.7% 25%, 42.1% 29%, 43.9% 37%, 47.4% 63%, 49.1% 54%, 51.4% 62%, 54.8% 58%, 57.0% 43%, 59.7% 67%, 61.4% 66%, 63.7% 60%, 67.4% 78%, 69.2% 41%, 71.5% 39%, 74.3% 26%, 76.0% 74%, 77.8% 31%, 81.3% 49%, 83.1% 26%, 86.5% 25%, 88.6% 84%, 92.2% 55%, 94.6% 70%, 97.1% 29%, 99.9% 37%, 100.0% 42%, 100% 0%);
+}
+.ani-footer-inner { max-width: 1520px; margin: 0 auto; padding: 0 40px; }
+.ani-footer-top {
+  display: grid; grid-template-columns: 1.6fr 1fr 1fr 1.2fr; gap: 40px; padding-bottom: 56px;
+}
+.ani-footer-brand {
+  font-family: var(--display); font-synthesis: none; font-weight: 700; text-transform: uppercase;
+  font-size: clamp(56px, 8vw, 128px); line-height: .9; color: var(--fire); margin: 0;
+}
+.ani-footer-tag { margin: 16px 0 0; max-width: 340px; font-size: 16px; line-height: 1.7; color: #333; }
+.ani-footer h4 {
+  font-family: var(--display); font-synthesis: none; font-weight: 700; text-transform: uppercase;
+  font-size: 22px; letter-spacing: .06em; margin: 0 0 16px; color: #000;
+}
+.ani-footer ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.ani-footer li, .ani-footer a { font-size: 16px; color: #000; text-decoration: none; }
+.ani-footer a:hover { color: var(--fire); }
+.ani-footer-contact li { display: flex; align-items: center; gap: 10px; }
+.ani-footer-contact .v-icon { color: var(--fire) !important; }
+.ani-footer-bottom {
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  padding: 20px 0 24px; border-top: 1px solid #000; font-size: 15px;
+}
+.ani-totop {
+  display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; cursor: pointer;
+  background: #000; color: #fff; border: 0; border-radius: 2px; font: 800 12px 'Manrope','Noto Sans Thai',sans-serif;
+}

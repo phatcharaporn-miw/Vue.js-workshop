@@ -1,0 +1,473 @@
+.ani-head {
+  display: flex;
+  align-items: flex-end;
+  gap: 16px;
+  padding: 0 0 18px;
+  margin-bottom: 28px;
+  border-bottom: 1px solid var(--line);
+  background: none;
+  box-shadow: none;
+  color: #fff;
+}
+.ani-head-icon {
+  width: 52px;
+  height: 52px;
+  flex: none;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--fire);
+  border-radius: 2px;
+  box-shadow: none;
+}
+.ani-head-icon .v-icon {
+  color: #fff !important;
+}
+.ani-head-title {
+  font-family: var(--display);
+  font-synthesis: none;
+  font-weight: 700;
+  font-size: clamp(44px, 8vw, 96px);
+  line-height: 0.95;
+  color: var(--fire);
+  text-transform: uppercase;
+  margin: 0;
+}
+.ani-head-sub {
+  margin: 0 0 8px;
+  color: var(--muted);
+  font-size: 20px !important;
+}
+.ani-head-deco {
+  display: none;
+}
+
+.ani-card {
+  background: var(--panel) !important;
+  border: 1px solid var(--line) !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  overflow: hidden;
+}
+.ani-card-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 20px;
+  font-weight: 800;
+  background: var(--panel-2);
+  border-bottom: 1px solid var(--line);
+}
+.ani-dot {
+  width: 34px;
+  height: 34px;
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--fire);
+  border-radius: 2px;
+}
+.ani-dot .v-icon {
+  color: #fff !important;
+}
+.ani-pill-chip {
+  display: inline-block;
+  padding: 4px 12px;
+  background: var(--fire);
+  color: #fff;
+  font-weight: 800;
+  font-size: 15px;
+  border-radius: 2px;
+}
+.ani-muted {
+  color: var(--muted);
+  font-size: 16px !important;
+}
+.ani-price {
+  color: var(--fire);
+  font-weight: 800;
+}
+
+/* การ์ดสินค้า */
+.ani-product {
+  height: 70%;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+.ani-product-media {
+  position: relative;
+  padding: 10px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  transition: border-color 0.15s;
+}
+.ani-product:hover .ani-product-media {
+  border-color: var(--fire);
+}
+.ani-product-badge {
+  position: absolute !important;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  background: var(--fire) !important;
+  color: #fff !important;
+  font-weight: 800 !important;
+}
+.ani-product-body {
+  padding: 12px 0 4px !important;
+}
+.ani-product-name {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-size: 20px;
+  line-height: 1.4;
+  font-weight: 700;
+  color: #fff;
+  min-height: 2.8em;
+}
+.ani-product-price {
+  margin-top: 6px;
+  font-size: 18px;
+}
+.ani-stock {
+  margin-top: 4px;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  color: var(--muted);
+}
+.ani-stock .in {
+  color: #3ddc84;
+}
+.ani-stock .out {
+  color: #ff5252;
+}
+.ani-product-actions {
+  padding: 8px 0 0 !important;
+  gap: 8px;
+}
+.ani-product-action-btn {
+  min-height: 38px !important;
+  padding: 0 12px !important;
+  font-size: 16px !important;
+}
+.ani-product-action-btn .v-icon {
+  font-size: 18px !important;
+}
+
+/* ===== ตะกร้า ===== */
+.ani-cart-item {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--line);
+}
+.ani-cart-item:last-child {
+  border-bottom: 0;
+}
+.ani-cart-thumb {
+  width: 92px;
+  height: 92px;
+  flex: none;
+  padding: 6px;
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+}
+.ani-cart-info {
+  flex: 1 1 200px;
+  min-width: 0;
+}
+.ani-cart-name {
+  font-weight: 700;
+  color: #fff;
+}
+.ani-cart-side {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-left: auto;
+}
+.ani-qty {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 6px;
+  border: 1px solid #fff;
+  border-radius: 2px;
+}
+.ani-qty-num {
+  min-width: 28px;
+  text-align: center;
+  font-weight: 800;
+}
+.ani-line-total {
+  min-width: 96px;
+  text-align: right;
+  font-size: 1.15rem;
+}
+.ani-line-total small {
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--muted);
+}
+.ani-more {
+  display: flex;
+  align-items: center;
+  padding: 16px 20px;
+  margin-top: 20px;
+  background: transparent !important;
+  border: 1px dashed var(--line) !important;
+  box-shadow: none !important;
+}
+.ani-more:hover {
+  border-color: var(--fire) !important;
+}
+.ani-summary {
+  position: sticky;
+  top: 96px;
+}
+.ani-summary-head {
+  display: flex;
+  align-items: center;
+  padding: 16px 22px;
+  background: var(--fire);
+  color: #fff;
+  font-weight: 800;
+  font-size: 1.3rem;
+}
+.ani-sum-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.ani-sum-row .label {
+  flex: 1;
+  color: var(--muted);
+}
+.ani-sum-row .value {
+  font-weight: 700;
+}
+.ani-total-badge {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 18px;
+  background: #fff;
+  color: #000;
+  border-radius: 2px;
+}
+.ani-total-badge .amount {
+  font-family: var(--display);
+  font-synthesis: none;
+  font-size: 2rem;
+  line-height: 1;
+  color: var(--fire);
+}
+.ani-checkout {
+  font-weight: 800 !important;
+}
+
+/* ===== Login ===== */
+.ani-login {
+  min-height: 100vh;
+  background: var(--black);
+  position: relative;
+  overflow: hidden;
+}
+.ani-login::before {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 38%;
+  background: var(--fire);
+}
+.ani-login-brand {
+  position: relative;
+  padding: 0 24px;
+}
+.ani-login-brand .logo {
+  width: 64px;
+  height: 64px;
+  margin-bottom: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--fire);
+  border-radius: 2px;
+}
+.ani-login-brand h1 {
+  font-family: var(--display);
+  font-synthesis: none;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: clamp(44px, 6vw, 84px);
+  line-height: 1;
+  color: #fff;
+}
+.ani-login-brand h1 em {
+  font-style: normal;
+  color: var(--fire);
+}
+.ani-login-brand p {
+  margin-top: 14px;
+  max-width: 360px;
+  color: var(--muted);
+}
+.ani-login-card {
+  position: relative;
+  padding: 36px 32px !important;
+  background: var(--panel) !important;
+  border: 1px solid var(--line) !important;
+  border-top: 4px solid var(--fire) !important;
+  border-radius: 0 !important;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6) !important;
+}
+.ani-field fieldset {
+  border: 1px solid var(--line) !important;
+}
+.ani-field.v-input--is-focused fieldset {
+  border-color: var(--fire) !important;
+  border-width: 1px !important;
+}
+.ani-field .v-icon {
+  color: var(--fire) !important;
+}
+
+/* ===== Profile ===== */
+.ani-profile {
+  max-width: 720px;
+}
+.ani-profile-top {
+  padding: 36px 24px 56px;
+  text-align: center;
+  background: var(--fire);
+  color: #fff;
+}
+.ani-avatar {
+  border: 4px solid #000 !important;
+  background: #000 !important;
+  border-radius: 2px !important;
+}
+.ani-avatar .v-icon {
+  color: var(--fire) !important;
+}
+.ani-profile-name {
+  margin-top: 12px;
+  font-family: var(--display);
+  font-synthesis: none;
+  font-size: 2rem;
+  text-transform: uppercase;
+}
+.ani-role {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 3px 14px;
+  background: #000;
+  color: #fff;
+  font-weight: 800;
+  font-size: 18px;
+}
+.ani-info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  padding: 20px;
+}
+.ani-info {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+}
+.ani-info .ico {
+  width: 42px;
+  height: 42px;
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--fire);
+}
+.ani-info .ico .v-icon {
+  color: var(--fire) !important;
+}
+.ani-info .k {
+  font-size: 16px;
+  color: var(--muted);
+}
+.ani-info .v {
+  font-weight: 700;
+  color: #fff;
+  word-break: break-all;
+}
+
+/* ===== Orders ===== */
+.ani-order-head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 20px;
+  background: var(--panel-2);
+  border-left: 4px solid var(--fire);
+}
+.ani-order-item {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--line);
+}
+.ani-order-total {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 20px;
+  background: var(--panel-2);
+}
+
+@media (max-width: 959px) {
+  .ani-login::before {
+    width: 100%;
+    top: auto;
+    height: 30%;
+  }
+  .ani-login-brand {
+    text-align: center;
+  }
+  .ani-login-brand .logo {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .ani-login-brand p {
+    display: none;
+  }
+  .ani-summary {
+    position: static;
+  }
+}
+@media (max-width: 600px) {
+  .ani-cart-side {
+    width: 100%;
+    justify-content: space-between;
+    margin-left: 0;
+  }
+  .ani-info-grid {
+    grid-template-columns: 1fr;
+  }
+}

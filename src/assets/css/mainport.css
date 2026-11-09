@@ -1,0 +1,110 @@
+.myportfolio-header-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  pointer-events: none;
+}
+
+.myportfolio-header-glow-bottom {
+  width: 320px;
+  height: 320px;
+  bottom: 12px;
+  right: -80px;
+  background: rgba(255, 215, 106, 0.45);
+}
+
+.myportfolio {
+  min-height: 100vh;
+  background: var(--v-primary-base);
+}
+
+.myportfolio-content {
+  box-sizing: border-box;
+  width: 100%;
+  /* max-width: 1120px; */
+  padding: clamp(52px, 7vw, 80px) 24px clamp(64px, 8vw, 96px);
+  padding-top: 0;
+}
+
+.myportfolio-section-heading {
+  max-width: 620px;
+  margin: 0 auto 44px;
+  text-align: center;
+}
+
+.myportfolio-eyebrow {
+  margin: 0 0 12px;
+  color: var(--v-quaternary-base);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+}
+
+.myportfolio-section-heading h2 {
+  margin: 0;
+  color: var(--v-tertiary-base);
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 1.15;
+}
+
+.myportfolio-section-heading > p:last-child {
+  margin: 14px 0 0;
+  color: var(--v-tertiary-base);
+  font-size: 1rem;
+  line-height: 1.7;
+  opacity: 0.78;
+}
+
+.myportfolio-sections {
+  display: grid;
+  gap: 28px;
+}
+
+.myportfolio-sections .about-grid {
+  width: 100%;
+  max-width: none;
+  gap: 24px;
+  margin: 0;
+  padding: 0;
+}
+
+.myportfolio-sections .about-card {
+  box-sizing: border-box;
+  min-height: 100%;
+  padding: 28px;
+  border: 1px solid var(--v-secondary-base);
+  border-radius: 22px;
+  box-shadow: 0 12px 30px rgba(37, 52, 63, 0.06);
+}
+
+.myportfolio-sections .about-card-dark {
+  border-color: var(--v-tertiary-base);
+  background: var(--v-tertiary-base);
+  color: var(--v-primary-base);
+}
+
+.myportfolio-sections .about-card-soft {
+  background: var(--v-secondary-base);
+  color: var(--v-tertiary-base);
+}
+
+.myportfolio-sections .about-card-outline {
+  background: var(--v-primary-base);
+  color: var(--v-tertiary-base);
+}
+
+.myportfolio-sections .about-card-title {
+  color: inherit;
+}
+
+.myportfolio-sections .about-card-text {
+  line-height: 1.65;
+}
+
+.myportfolio-sections .about-hobbies li {
+  color: var(--v-tertiary-base);
+}
+
+

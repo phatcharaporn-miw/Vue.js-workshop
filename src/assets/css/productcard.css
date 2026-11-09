@@ -1,0 +1,131 @@
+.product-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid #c8e5ee !important;
+  border-radius: 17px !important;
+  background: #fff;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 28px rgba(15, 40, 84, 0.1) !important;
+}
+
+.product-image-wrapper {
+  position: relative;
+  overflow: hidden;
+  padding: 12px;
+  background: #e8f7fb;
+}
+
+.product-image {
+  border-radius: 11px;
+  background: #e8f7fb;
+}
+
+.image-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  background: #BDE8F5;
+}
+
+.stock-badge {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 10px;
+  font-weight: 700;
+  background: #1C4D8D;
+}
+
+.product-content {
+  flex: 1;
+  padding: 18px 18px 14px !important;
+}
+
+.product-category {
+  display: flex;
+  align-items: center;
+  color: #1C4D8D;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.product-name {
+  display: -webkit-box;
+  overflow: hidden;
+  min-height: 48px;
+  color: #0F2854;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.product-detail {
+  display: -webkit-box;
+  overflow: hidden;
+  min-height: 36px;
+  margin-top: 5px;
+  color: #4988C4;
+  font-size: 12px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.product-price {
+  margin-top: 15px;
+  color: #1C4D8D;
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.3px;
+}
+
+.stock-info {
+  display: flex;
+  align-items: center;
+  margin-top: 9px;
+  font-size: 11px;
+}
+
+.in-stock {
+  color: #38865a;
+}
+
+.out-of-stock {
+  color: #d64545;
+}
+
+.product-actions {
+  min-height: 68px;
+  gap: 5px;
+}
+
+.detail-btn {
+  padding: 0 7px !important;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+.cart-btn {
+  padding: 0 12px !important;
+  border-radius: 9px;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0;
+  background: linear-gradient(135deg, #1C4D8D, #4988C4) !important;
+}
+
+.cart-btn.v-btn--disabled {
+  background: #e6e5ed !important;
+  color: #9694a5 !important;
+}

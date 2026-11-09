@@ -1,0 +1,134 @@
+
+.portfolio-header {
+   --ph-line: rgba(91, 91, 214, 0.12);
+
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  color: var(--v-tertiary-base);
+}
+
+.portfolio-header-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  pointer-events: none;
+}
+
+.portfolio-header-glow-top {
+  width: 380px;
+  height: 380px;
+  top: -140px;
+  right: 8%;
+  background: rgba(91, 91, 214, 0.28);
+}
+
+.portfolio-header-glow-bottom {
+  width: 320px;
+  height: 320px;
+  bottom: 80px;
+  left: -60px;
+  background: rgba(255, 215, 106, 0.45);
+}
+
+.portfolio-header-title {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+}
+
+.portfolio-header-greeting {
+  display: block;
+  margin-bottom: 12px;
+  font-size: 1.6rem;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+.portfolio-header-name {
+  display: block;
+  font-size: clamp(2.8rem, 8vw, 5.6rem);
+  font-weight: 800;
+  color: var(--v-tertiary-base);
+}
+
+.portfolio-header-surname {
+  display: block;
+  margin-top: 4px;
+  font-size: clamp(2.8rem, 8vw, 5.6rem);
+  font-weight: 500;
+  color: var(--v-tertiary-base);
+  opacity: 0.75;
+}
+
+/* ---------- about ---------- */
+.portfolio-header-about {
+  max-width: 34rem;
+  margin-top: 40px;
+  padding-left: 20px;
+  border-left: 3px solid var(--v-tertiary-base);
+}
+
+.portfolio-header-about-title {
+  margin: 0 0 8px;
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: var(--v-tertiary-base);
+}
+
+.portfolio-header-about-text {
+  margin: 0;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--v-tertiary-base);
+}
+
+.portfolio-header-portrait-column {
+  display: flex;
+  justify-content: center;
+}
+
+.portfolio-header-portrait {
+  position: relative;
+  width: min(100%, 360px);
+  isolation: isolate;
+}
+
+.portfolio-header-portrait-block {
+  position: absolute;
+  inset: 0;
+  transform: translate(18px, 18px);
+  border-radius: 28px 120px 28px 28px;
+  background: var(--v-tertiary-base);
+  z-index: -1;
+}
+
+.portfolio-header-image {
+  border-radius: 28px 120px 28px 28px;
+  box-shadow: 0 24px 48px -20px rgba(var(--v-tertiary-base), 0.5);
+  background: var(--v-tertiary-base);
+}
+
+.about-nickname {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 32px;
+  padding: 10px 20px 10px 14px;
+  border-radius: 999px;
+  background: var(--v-tertiary-base);
+  color: var(--v-primary-base);
+  font-weight: 500;
+}
+ 
+.about-nickname-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--v-primary-base);
+}

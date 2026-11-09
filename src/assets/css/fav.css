@@ -1,0 +1,42 @@
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  width: 100%;
+}
+
+.about-card {
+  min-width: 0;
+  padding: 24px;
+  border-radius: 16px;
+}
+
+.about-card-title {
+  margin-bottom: 20px;
+  font-size: 30px;
+  font-weight: 600;
+}
+
+.about-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.about-list li {
+  display: flex;
+  align-items: flex-start;
+  min-width: 0;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+/* .about-list .v-icon {
+  flex-shrink: 0;
+}
+
+.about-list-muted {
+  opacity: 0.75;
+} */
