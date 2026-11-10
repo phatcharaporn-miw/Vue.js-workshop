@@ -14,7 +14,7 @@ export default {
 
       sortBy: 'default',
       page: 1,
-      perPage: 12,
+      perPage: 8,
       sortTabs: [
         { value: 'default', label: 'ทั้งหมด' },
       ],

@@ -75,12 +75,48 @@
 }
 
 .store-navbar {
-  background: var(--black) !important;
+  overflow: visible !important;
+  background: #fff !important;
+  color: #000 !important;
   border-bottom: 0 !important;
 }
 .store-navbar .v-toolbar__content {
+  position: relative;
+  overflow: visible;
+  background: #fff;
+  color: #000;
   padding: 0 32px !important;
 }
+.store-navbar .v-toolbar__content::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  right: 0;
+  bottom: -13px;
+  left: 0;
+  height: 14px;
+  background: #fff;
+  clip-path: polygon(
+    0 0, 100% 0, 100% 42%, 97.1% 29%, 94.6% 70%, 92.2% 55%,
+    88.6% 84%, 86.5% 26%, 83.1% 26%, 81.3% 49%, 77.8% 31%,
+    76% 74%, 74.3% 26%, 71.5% 39%, 69.2% 41%, 67.4% 78%,
+    63.7% 60%, 61.4% 66%, 59.7% 67%, 57% 43%, 54.8% 58%,
+    51.4% 62%, 49.1% 89%, 47.4% 63%, 43.9% 37%, 42.1% 29%,
+    38.7% 25%, 36.8% 66%, 33.5% 66%, 29.8% 50%, 28.1% 65%,
+    24.6% 76%, 22.8% 34%, 20.2% 31%, 16.8% 64%, 17.2% 57%,
+    12.2% 37%, 8.7% 57%, 6.1% 74%, 2.6% 60%, 0 40%
+  );
+  pointer-events: none;
+}
+.store-navbar .v-btn:not(.login-button),
+.store-navbar .v-icon {
+  color: #000 !important;
+}
+.store-navbar .login-button,
+.store-navbar .login-button .v-icon {
+  color: #fff !important;
+}
+
 .ani-nav-grid {
   display: grid;
   grid-template-columns: 1fr auto 1fr;
@@ -148,8 +184,18 @@
   color: #fff !important;
 }
 .profile-menu {
+  background: #fff !important;
+  color: #000 !important;
   border-radius: 0 !important;
-  border: 1px solid var(--line);
+}
+.profile-menu .v-list {
+  background: #fff !important;
+  color: #000 !important;
+  margin: 8px 4px;
+}
+.profile-menu .v-list-item__title,
+.profile-menu .v-subheader {
+  color: #000 !important;
 }
 
 .ani-catalog {
@@ -660,7 +706,7 @@
 }
 
 /* =====================================================================
-   Footer (กระดาษขาวขอบฉีก ต่อจากพื้นดำ)
+   Footer (กระดาษขาวขอบฉีก)
    ===================================================================== */
 .ani-shell { min-height: 100vh; display: flex; flex-direction: column; }
 .ani-shell > .v-main { flex: 1 0 auto; }

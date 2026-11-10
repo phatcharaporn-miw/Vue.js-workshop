@@ -58,7 +58,7 @@
         </template>
 
         <v-list dense class="profile-list py-2">
-          <v-subheader class="profile-heading">บัญชีผู้ใช้</v-subheader>
+          <!-- <v-subheader class="profile-heading">บัญชีผู้ใช้</v-subheader> -->
 
           <v-list-item to="/profile" link>
             <v-list-item-icon>
@@ -147,7 +147,7 @@ export default {
       Logout();
       this.isLoggedIn = false;
       this.isAdmin = false;
-      this.$router.push("/login");
+      this.$router.replace("/products");
     },
   },
 };

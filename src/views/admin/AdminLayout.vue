@@ -86,7 +86,7 @@ export default {
   methods: {
     logout() {
       Logout();
-      this.$router.replace("/login");
+      this.$router.replace("/products");
     },
   },
 };

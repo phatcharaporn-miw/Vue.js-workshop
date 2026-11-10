@@ -51,7 +51,7 @@
           :key="item._id || item.productCode || itemIndex"
           class="ani-order-item"
         >
-          <div class="ani-cart-thumb" style="width:72px;height:72px">
+          <div class="ani-cart-thumb">
             <v-img :src="getProductImage(item)" aspect-ratio="1" contain />
           </div>
 
