@@ -70,14 +70,6 @@
       </div>
     </v-container>
  
-    <v-snackbar v-model="snackbar" :timeout="2000" top right>
-      <v-icon color="success" class="mr-2">mdi-check-circle</v-icon>
-      {{ message }}
-      <template slot="action" slot-scope="{ attrs }">
-        <v-btn text v-bind="attrs" @click="snackbar = false">ปิด</v-btn>
-      </template>
-    </v-snackbar>
-
     <Footer/>
   </div>
 </template>

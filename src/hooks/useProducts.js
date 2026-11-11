@@ -9,8 +9,6 @@ export default {
       search: '',
       loading: false,
       error: '',
-      snackbar: false,
-      message: '',
 
       sortBy: 'default',
       page: 1,
@@ -102,8 +100,7 @@ export default {
       const id = product._id || product.id
 
       if (!id) {
-        this.message = 'ProductId is missing.'
-        this.snackbar = true
+        this.$toast('ไม่พบรหัสสินค้า', 'error')
         return
       }
 
@@ -112,16 +109,14 @@ export default {
 
       if (existing) {
         if (existing.quantity + 1 > stock) {
-          this.message = 'Not enough stock.'
-          this.snackbar = true
+          this.$toast('สินค้าในสต็อกไม่เพียงพอ', 'error')
           return
         }
 
         existing.quantity += 1
       } else {
         if (stock <= 0) {
-          this.message = 'Product is out of stock.'
-          this.snackbar = true
+          this.$toast('สินค้าหมด', 'error')
           return
         }
 
@@ -139,8 +134,7 @@ export default {
       localStorage.setItem('cart', JSON.stringify(cart))
       window.dispatchEvent(new Event('cart-updated'))
 
-      this.message = 'Added to cart'
-      this.snackbar = true
+      this.$toast('เพิ่มลงตะกร้าสินค้าเรียบร้อย', 'success')
     },
   },
 }

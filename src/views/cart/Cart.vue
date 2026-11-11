@@ -138,10 +138,6 @@
               </span>
             </div>
 
-            <v-alert v-if="checkoutError" type="error" dense text class="mt-5 mb-0">
-              {{ checkoutError }}
-            </v-alert>
-
             <v-btn
               block
               large
@@ -166,8 +162,6 @@
     </v-row>
   </v-container>
 </template>
-
-<!-- <style src="../../assets/css/cart.css"></style> -->
 
 <script>
 import useCart from "@/hooks/useCart";

@@ -50,8 +50,6 @@ export default {
       formError: '',
       saving: false,
       deleting: false,
-      snackbar: false,
-      message: '',
       requiredRule: (value) => Boolean(String(value).trim()) || 'กรุณากรอกข้อมูล',
       ageRule: (value) =>
         (Number.isInteger(Number(value)) && Number(value) >= 0) || 'กรุณากรอกอายุเป็นจำนวนเต็มตั้งแต่ 0 ขึ้นไป',
@@ -203,6 +201,7 @@ export default {
           : (error.response && error.response.data && error.response.data.message) ||
             error.message ||
             'บันทึกข้อมูลผู้ใช้ไม่สำเร็จ'
+        this.$toast(this.formError, 'error')
       } finally {
         this.saving = false
       }
@@ -219,6 +218,7 @@ export default {
       if (!id || !isRegularUser(this.userToDelete)) {
         this.error = 'ไม่พบผู้ใช้ role = 1 ที่ต้องการลบ'
         this.deleteDialog = false
+        this.$toast(this.error, 'error')
         return
       }
 
@@ -236,14 +236,14 @@ export default {
           error.message ||
           'ไม่สามารถลบผู้ใช้ได้'
         this.deleteDialog = false
+        this.$toast(this.error, 'error')
       } finally {
         this.deleting = false
       }
     },
 
     notify(message) {
-      this.message = message
-      this.snackbar = true
+      this.$toast(message, 'success')
     },
   },
 }

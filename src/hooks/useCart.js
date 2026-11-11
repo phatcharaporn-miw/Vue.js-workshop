@@ -11,7 +11,6 @@ export default {
       cart: [],
       selectedIds: [],
       checkingOut: false,
-      checkoutError: "",
     };
   },
 
@@ -71,7 +70,10 @@ export default {
         return imagePath;
       }
 
-      return new URL(imagePath.replace(/^\/+/, ""), `${api.defaults.baseURL}/`).toString();
+      return new URL(
+        imagePath.replace(/^\/+/, ""),
+        `${api.defaults.baseURL}/`,
+      ).toString();
     },
 
     async checkout() {
@@ -79,10 +81,10 @@ export default {
         return;
       }
 
-      this.checkoutError = "";
       const token = getToken();
 
       if (!token) {
+        this.$toast("กรุณาเข้าสู่ระบบก่อนสั่งซื้อ", "error");
         this.$router.push("/login");
         return;
       }
@@ -101,7 +103,11 @@ export default {
               productCode = product && (product.code || product.productCode);
             }
 
-            if (productCode === undefined || productCode === null || productCode === "") {
+            if (
+              productCode === undefined ||
+              productCode === null ||
+              productCode === ""
+            ) {
               throw new Error(
                 `ไม่พบรหัสสินค้าของ "${item.productname}" กรุณาลบสินค้าแล้วเพิ่มลงตะกร้าใหม่`,
               );
@@ -126,24 +132,31 @@ export default {
         const purchasedIds = new Set(
           this.selectedItems.map((item) => String(item.id)),
         );
+
         this.cart = this.cart.filter(
           (item) => !purchasedIds.has(String(item.id)),
         );
+
         this.selectedIds = [];
         this.saveCart();
         window.dispatchEvent(new Event("cart-updated"));
 
-        alert("สั่งซื้อสำเร็จ");
-        this.$router.push("/my-orders");
+        // Success Toast
+        this.$toast("ขอบคุณที่อุดหนุน Comic Verse!", "success");
+
+        setTimeout(() => {
+          this.$router.push("/my-orders");
+        }, 1200);
       } catch (error) {
         console.error("Create order error:", error.response?.data || error);
 
-        this.checkoutError =
-          (error.response &&
-            error.response.data &&
-            error.response.data.message) ||
+        const errorMessage =
+          error.response?.data?.message ||
           error.message ||
           "ไม่สามารถสั่งซื้อได้ กรุณาลองอีกครั้ง";
+
+        // Error Toast
+        this.$toast(errorMessage, "error");
       } finally {
         this.checkingOut = false;
       }
@@ -175,6 +188,7 @@ export default {
       );
 
       this.saveCart();
+      // this.$toast("นำสินค้าออกจากตะกร้าแล้ว", "success");
     },
   },
 };

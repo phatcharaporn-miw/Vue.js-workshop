@@ -100,7 +100,7 @@ export default {
   data() {
     return {
       currentPage: 1,
-      itemsPerPage: 3,
+      itemsPerPage: 4,
     }
   },
 

@@ -21,7 +21,6 @@
           <v-icon color="white" size="52">mdi-account</v-icon>
         </v-avatar>
         <div class="ani-profile-name">{{ fullName || profile.username || 'โปรไฟล์ผู้ใช้' }}</div>
-        <span class="ani-role">{{ roleLabel }}</span>
       </div>
 
       <div class="ani-info-grid">

@@ -35,8 +35,6 @@ export default {
       formError: '',
       imageError: '',
       pageError: '',
-      snackbar: false,
-      message: '',
       requiredRule: (v) => Boolean(String(v).trim()) || 'กรุณากรอกข้อมูล',
     }
   },
@@ -89,9 +87,8 @@ export default {
       this.imageError = ''
     },
 
-    notify(message) {
-      this.message = message
-      this.snackbar = true
+    notify(message, type = 'success') {
+      this.$toast(message, type)
     },
 
     async saveProduct() {
@@ -131,6 +128,7 @@ export default {
         await this.fetchProducts()
       } catch (e) {
         this.formError = 'บันทึกสินค้าไม่สำเร็จ'
+        this.notify(this.formError, 'error')
       } finally {
         this.saving = false
       }
@@ -146,6 +144,7 @@ export default {
       if (!id) {
         this.pageError = 'ไม่พบรหัสสินค้า จึงไม่สามารถลบได้'
         this.deleteDialog = false
+        this.notify(this.pageError, 'error')
         return
       }
 
@@ -159,6 +158,7 @@ export default {
       } catch (e) {
         this.pageError = 'ไม่สามารถลบสินค้าได้'
         this.deleteDialog = false
+        this.notify(this.pageError, 'error')
       } finally {
         this.deleting = false
       }

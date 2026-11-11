@@ -127,12 +127,12 @@ export default {
           this.postdata,
         );
         console.log(data);
-        alert("save complete");
+        this.$toast("เพิ่มผู้ใช้เรียบร้อย", "success");
         this.getData();
         this.closeItem();
       } catch (error) {
         console.log(error);
-        alert("error");
+        this.$toast(error.response?.data?.message || "เพิ่มผู้ใช้ไม่สำเร็จ", "error");
       }
     },
     async savePutdata() {
@@ -145,12 +145,12 @@ export default {
           },
         );
         console.log(data);
-        alert("update complete");
+        this.$toast("แก้ไขผู้ใช้เรียบร้อย", "success");
         this.getData();
         this.closeItem();
       } catch (error) {
         console.log(error);
-        alert('error');
+        this.$toast(error.response?.data?.message || "แก้ไขผู้ใช้ไม่สำเร็จ", "error");
       }
     },
     async deleteItem(item) {
@@ -160,12 +160,12 @@ export default {
           "http://localhost:3000/users/"+item._id,
         );
         console.log(data);
-        alert("delete complete");
+        this.$toast("ลบผู้ใช้เรียบร้อย", "success");
         this.getData();
         this.closeItem();
       } catch (error) {
         console.log(error);
-        alert('error');
+        this.$toast(error.response?.data?.message || "ลบผู้ใช้ไม่สำเร็จ", "error");
       }
     },
   },

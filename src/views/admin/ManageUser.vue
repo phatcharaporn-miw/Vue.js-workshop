@@ -177,13 +177,6 @@
         </v-card-actions>
       </v-card>
     </v-dialog>
-
-    <v-snackbar v-model="snackbar" :timeout="2500" top right>
-      {{ message }}
-      <template v-slot:action="{ attrs }">
-        <v-btn text v-bind="attrs" @click="snackbar = false">ปิด</v-btn>
-      </template>
-    </v-snackbar>
   </v-container>
 </template>
 

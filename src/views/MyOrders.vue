@@ -93,7 +93,7 @@ export default {
       loading: false,
       error: '',
       currentPage: 1,
-      itemsPerPage: 3,
+      itemsPerPage: 4 ,
     }
   },
 

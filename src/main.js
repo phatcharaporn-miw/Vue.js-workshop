@@ -11,6 +11,13 @@ Vue.use(VueAxios, axios)
 Vue.use(require('vue-cookies'))
 Vue.config.productionTip = false
 
+Vue.prototype.$toast = function (message, type) {
+  this.$root.$emit("show-toast", {
+    message,
+    type,
+  });
+};
+
 new Vue({
   router,
   store,

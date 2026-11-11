@@ -48,14 +48,14 @@ export default {
       this.gradeResult = "";
 
       if (this.scoreInput.trim() === "" || isNaN(this.scoreInput)) {
-        alert("แจ้งเตือน: กรุณากรอกคะแนนเป็นตัวเลขเท่านั้น");
+        this.$toast("กรุณากรอกคะแนนเป็นตัวเลขเท่านั้น", "error");
         return;
       }
 
       const score = this.scoreInput;
 
       if (score < 0 || score > 100) {
-        alert("คะแนนต้องอยู่ระหว่างช่วง 0 - 100 เท่านั้น");
+        this.$toast("คะแนนต้องอยู่ระหว่างช่วง 0 - 100 เท่านั้น", "error");
         return;
       }
 
@@ -70,6 +70,8 @@ export default {
       } else if (score >= 0 && score <= 49) {
         this.gradeResult = "F";
       }
+
+      this.$toast(`คำนวณเกรดสำเร็จ: ${this.gradeResult}`, "success");
     },
   },
 };

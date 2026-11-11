@@ -18,17 +18,10 @@
             </p>
           </div>
 
-          <v-alert v-if="registrationComplete" type="success" dense text border="left" class="mb-4">
-            สมัครบัญชีเรียบร้อยแล้ว กรุณาเข้าสู่ระบบ
-          </v-alert>
-          <v-alert v-if="error" type="error" dense text border="left" class="mb-4">
-            {{ error }}
-          </v-alert>
-
           <v-form v-if="!registering" @submit.prevent="login">
             <v-text-field
               v-model="username"
-              label="Username"
+              label="ชื่อผู้ใช้"
               prepend-inner-icon="mdi-account-outline"
               outlined
               rounded
@@ -39,7 +32,7 @@
 
             <v-text-field
               v-model="password"
-              label="Password"
+              label="รหัสผ่าน"
               prepend-inner-icon="mdi-lock-outline"
               :append-icon="showPassword ? 'mdi-eye-off-outline' : 'mdi-eye-outline'"
               :type="showPassword ? 'text' : 'password'"
@@ -198,11 +191,9 @@ export default {
     return {
       username: '',
       password: '',
-      error: '',
       loading: false,
       showPassword: false,
       registering: false,
-      registrationComplete: false,
       registration: {
         username: '',
         password: '',
@@ -239,13 +230,10 @@ export default {
 
     toggleRegistration() {
       this.registering = !this.registering
-      this.error = ''
-      this.registrationComplete = false
       this.showPassword = false
     },
 
     async register() {
-      this.error = ''
       if (this.loading || !this.$refs.signupForm.validate()) return
 
       this.loading = true
@@ -265,21 +253,20 @@ export default {
         this.registration.password = ''
         this.registration.confirmPassword = ''
         this.registering = false
-        this.registrationComplete = true
+        this.$toast('สมัครบัญชีเรียบร้อยแล้ว กรุณาเข้าสู่ระบบ', 'success')
       } catch (error) {
         const status = error.response && error.response.status
-        this.error = status === 409
+        const message = status === 409
           ? 'ชื่อผู้ใช้นี้มีผู้ใช้แล้ว กรุณาเลือกชื่อผู้ใช้อื่น'
           : (error.response && error.response.data && error.response.data.message) ||
             'สมัครบัญชีไม่สำเร็จ กรุณาลองอีกครั้ง'
+        this.$toast(message, 'error')
       } finally {
         this.loading = false
       }
     },
 
     async login() {
-      this.error = ''
-      this.registrationComplete = false
       this.loading = true
 
       try {
@@ -292,16 +279,18 @@ export default {
         saveUserProfile(response.data.user || response.data.profile || response.data)
 
         if (response.data.role === 0) {
+          // this.$toast('เข้าสู่ระบบสำเร็จ', 'success')
           this.$router.push('/admin/products')
         } else if (response.data.role === 1) {
+          // this.$toast('เข้าสู่ระบบสำเร็จ', 'success')
           this.$router.push('/products')
         } else {
-          this.error = 'Not found user'
+          this.$toast('ไม่พบข้อมูลผู้ใช้', 'error')
         }
 
         console.log(response.data)
       } catch (error) {
-        this.error = error.response?.data?.message || 'เข้าสู่ระบบไม่สำเร็จ'
+        this.$toast(error.response?.data?.message || 'เข้าสู่ระบบไม่สำเร็จ', 'error')
           
       } finally {
         this.loading = false

@@ -147,7 +147,7 @@ export default {
       Logout();
       this.isLoggedIn = false;
       this.isAdmin = false;
-      this.$router.replace("/products");
+      this.$router.replace("/login");
     },
   },
 };

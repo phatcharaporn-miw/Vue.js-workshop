@@ -180,6 +180,7 @@ export default {
 
     handleAddToCart() {
       if (!this.isLoggedIn) {
+        this.$toast("กรุณาเข้าสู่ระบบก่อนเพิ่มสินค้าลงตะกร้า", "error");
         this.$router.push("/login");
         return;
       }
