@@ -277,6 +277,7 @@ export default {
         localStorage.setItem('token', response.data.token)
         localStorage.setItem('role', response.data.role)
         saveUserProfile(response.data.user || response.data.profile || response.data)
+        localStorage.removeItem('cart')
 
         if (response.data.role === 0) {
           // this.$toast('เข้าสู่ระบบสำเร็จ', 'success')

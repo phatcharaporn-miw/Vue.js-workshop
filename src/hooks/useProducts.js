@@ -1,4 +1,6 @@
 import productService from '@/services/productService'
+import { getCart, getCartKey, saveCart } from '@/services/cartStorage'
+import { getToken } from '@/services/auth'
 
 export default {
   // components: { ProductCard },
@@ -96,7 +98,17 @@ export default {
     },
 
     addToCart(product) {
-      const cart = JSON.parse(localStorage.getItem('cart') || '[]')
+      if (!getToken()) {
+        this.$toast('กรุณาเข้าสู่ระบบก่อนเพิ่มสินค้าลงตะกร้า', 'error')
+        return
+      }
+
+      if (!getCartKey()) {
+        this.$toast('ไม่พบข้อมูลบัญชีผู้ใช้สำหรับบันทึกตะกร้า', 'error')
+        return
+      }
+
+      const cart = getCart()
       const id = product._id || product.id
 
       if (!id) {
@@ -131,7 +143,11 @@ export default {
         })
       }
 
-      localStorage.setItem('cart', JSON.stringify(cart))
+      if (!saveCart(cart)) {
+        this.$toast('ไม่สามารถบันทึกตะกร้าสินค้าได้', 'error')
+        return
+      }
+
       window.dispatchEvent(new Event('cart-updated'))
 
       this.$toast('เพิ่มลงตะกร้าสินค้าเรียบร้อย', 'success')

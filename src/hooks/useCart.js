@@ -2,6 +2,7 @@ import productService from "@/services/productService";
 import orderService from "@/services/orderservice";
 import api from "@/services/api";
 import { getToken } from "@/services/auth";
+import { getCart, saveCart } from "@/services/cartStorage";
 
 const fallbackImage = "https://placehold.co/200x200?text=Product";
 
@@ -15,7 +16,13 @@ export default {
   },
 
   created() {
-    this.cart = JSON.parse(localStorage.getItem("cart") || "[]");
+    if (!getToken()) {
+      this.cart = [];
+      this.selectedIds = [];
+      return;
+    }
+
+    this.cart = getCart();
     this.selectedIds = this.cart.map((item) => String(item.id));
   },
 
@@ -76,6 +83,7 @@ export default {
       ).toString();
     },
 
+    // สั่งซื้อสินค้า
     async checkout() {
       if (this.selectedItems.length === 0 || this.checkingOut) {
         return;
@@ -162,9 +170,13 @@ export default {
       }
     },
     saveCart() {
-      localStorage.setItem("cart", JSON.stringify(this.cart));
+      if (!saveCart(this.cart)) {
+        this.$toast("ไม่สามารถระบุบัญชีผู้ใช้สำหรับบันทึกตะกร้าได้", "error");
+        return;
+      }
 
-      this.$root.$emit("cart-updated");
+      // this.$root.$emit("cart-updated");
+      window.dispatchEvent(new Event("cart-updated"));
     },
 
     increaseQuantity(item) {

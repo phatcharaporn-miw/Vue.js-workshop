@@ -76,6 +76,19 @@
         <span class="ani-pill-chip">{{ products.length }} รายการ</span>
       </div>
 
+      <div class="px-4 pt-4">
+        <v-text-field
+          v-model="search"
+          label="ค้นหาชื่อหรือนามสกุล"
+          prepend-inner-icon="mdi-magnify"
+          clearable
+          outlined
+          dense
+          hide-details
+          class="mb-0"
+        />
+      </div>
+
       <v-data-table
         :headers="headers"
         :items="products"
@@ -243,7 +256,6 @@
             :disabled="saving"
             @click="saveProduct"
           >
-           
             {{ editingProduct ? 'บันทึกการแก้ไข' : 'บันทึกสินค้า' }}
           </v-btn>
         </v-card-actions>

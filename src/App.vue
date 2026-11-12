@@ -1,20 +1,3 @@
-<!-- <template>
-  <v-app>
-    <router-view/>
-  </v-app>
-</template>
-
-<script>
-
-export default {
-  name: 'App',
-
-  data: () => ({
-    //
-  }),
-};
-</script> -->
-
 <template>
   <v-app>
     <router-view />
@@ -49,19 +32,25 @@ export default {
           aria-label="ปิดการแจ้งเตือน"
           @click="dismissToast"
         >
-          ×
+          x
         </button>
 
         <div class="comic-toast-progress"></div>
       </div>
     </transition>
-
+    <AppFooter/>
   </v-app>
 </template>
 
 <script>
+// import AppFooter from "@/components/Footer.vue"
+
 export default {
   name: "App",
+
+  // components: {
+  //   AppFooter,
+  // },
 
   data() {
     return {

@@ -1,7 +1,9 @@
 <template>
   <v-container class="py-8">
     <div class="ani-head">
-      <div class="ani-head-icon"><v-icon size="34">mdi-clipboard-list-outline</v-icon></div>
+      <div class="ani-head-icon">
+        <v-icon size="34">mdi-clipboard-list-outline</v-icon>
+      </div>
       <div>
         <h1 class="ani-head-title">รายการสั่งซื้อของฉัน</h1>
         <p class="ani-head-sub">ตรวจสอบรายการคำสั่งซื้อของคุณ</p>
@@ -15,13 +17,23 @@
       <p class="ani-muted mt-3">กำลังโหลดรายการสั่งซื้อ...</p>
     </div>
 
-    <v-card v-else-if="orders.length === 0" class="ani-card pa-10 text-center" flat>
+    <v-card
+      v-else-if="orders.length === 0"
+      class="ani-card pa-10 text-center"
+      flat
+    >
       <div class="empty-icon mx-auto">
         <v-icon size="46">mdi-clipboard-text-outline</v-icon>
       </div>
       <h2 class="text-h6 mt-5 font-weight-black">ยังไม่มีรายการสั่งซื้อ</h2>
       <p class="ani-muted mt-2">สินค้าที่คุณสั่งซื้อจะแสดงที่หน้านี้</p>
-      <v-btn color="primary" depressed large to="/products" class="mt-4 text-none px-8">
+      <v-btn
+        color="primary"
+        depressed
+        large
+        to="/products"
+        class="mt-4 text-none px-8"
+      >
         <v-icon left>mdi-store</v-icon>
         เลือกซื้อสินค้า
       </v-btn>
@@ -42,30 +54,58 @@
         <div class="ani-order-head">
           <div class="ani-dot"><v-icon>mdi-receipt-text-outline</v-icon></div>
           <div>
-            <div class="font-weight-black">คำสั่งซื้อรายการที่ {{ orderIndex + 1 }}</div>
-            <div class="text-caption" style="opacity:.9">{{ formatDate(order.createdAt) }}</div>
+            <div class="font-weight-black">
+              คำสั่งซื้อรายการที่ {{ orderIndex + 1 }}
+            </div>
+            <div class="text-caption" style="opacity: 0.9">
+              {{ formatDate(order.createdAt) }}
+            </div>
           </div>
         </div>
 
-        <div v-for="(item, itemIndex) in order.items || []" :key="item.productCode || itemIndex" class="ani-order-item">
+        <div
+          v-for="(item, itemIndex) in order.items || []"
+          :key="item.productCode || itemIndex"
+          class="ani-order-item"
+        >
           <div class="ani-cart-thumb">
             <v-img :src="getProductImage(item)" aspect-ratio="1" contain />
           </div>
 
           <div class="ani-cart-info">
-            <div class="ani-cart-name">{{ item.productname || 'สินค้า' }}</div>
+            <div class="ani-cart-name">{{ item.productname || "สินค้า" }}</div>
             <div class="ani-muted mt-1">จำนวน {{ item.quantity }} ชิ้น</div>
-            <div class="ani-muted" style="font-size:12px">{{ formatPrice(item.price) }} / ชิ้น</div>
+            <div class="ani-muted" style="font-size: 12px">
+              {{ formatPrice(item.price) }} / ชิ้น
+            </div>
           </div>
         </div>
 
-        <div v-if="!order.items || order.items.length === 0" class="text-center ani-muted py-4">
+        <div
+          v-if="!order.items || order.items.length === 0"
+          class="text-center ani-muted py-4"
+        >
           ไม่พบรายการสินค้าในคำสั่งซื้อนี้
         </div>
 
         <div class="ani-order-total">
-          <span class="ani-muted">ยอดรวมทั้งสิ้น</span>
-          <span class="ani-price" style="font-size:1.4rem">{{ formatPrice(order.totalAmount) }}</span>
+          <div class="ani-total-info">
+            <span class="ani-muted">ยอดรวมทั้งสิ้น</span>
+            <span class="ani-price" style="font-size: 1.4rem">
+              {{ formatPrice(order.totalAmount) }}
+            </span>
+          </div>
+
+          <v-btn
+            large
+            depressed
+            color="primary"
+            class="ani-checkout"
+            @click="buyAgain(order)"
+          >
+            <v-icon left>mdi-cart-arrow-right</v-icon>
+            ซื้ออีกครั้ง
+          </v-btn>
         </div>
       </v-card>
 
@@ -82,43 +122,45 @@
 </template>
 
 <script>
-import orderService from '@/services/orderservice'
+import orderService from "@/services/orderservice";
+import productService from "@/services/productService";
+import { getCart, getCartKey, saveCart } from "@/services/cartStorage";
 
 export default {
-  name: 'MyOrders',
+  name: "MyOrders",
 
   data() {
     return {
       orders: [],
       loading: false,
-      error: '',
+      error: "",
       currentPage: 1,
-      itemsPerPage: 4 ,
-    }
+      itemsPerPage: 4,
+    };
   },
 
   created() {
-    this.fetchOrders()
+    this.fetchOrders();
   },
 
   computed: {
     pageCount() {
-      return Math.ceil(this.orders.length / this.itemsPerPage)
+      return Math.ceil(this.orders.length / this.itemsPerPage);
     },
 
     paginatedOrders() {
-      const start = (this.currentPage - 1) * this.itemsPerPage
-      return this.orders.slice(start, start + this.itemsPerPage)
+      const start = (this.currentPage - 1) * this.itemsPerPage;
+      return this.orders.slice(start, start + this.itemsPerPage);
     },
   },
 
   methods: {
     async fetchOrders() {
-      this.loading = true
-      this.error = ''
+      this.loading = true;
+      this.error = "";
 
       try {
-        const { data } = await orderService.getAll()
+        const { data } = await orderService.getAll();
 
         const result = Array.isArray(data)
           ? data
@@ -126,65 +168,125 @@ export default {
           ? data.data
           : data && Array.isArray(data.orders)
           ? data.orders
-          : null
+          : null;
 
         if (!result) {
-          throw new Error('รูปแบบข้อมูลรายการสั่งซื้อไม่ถูกต้อง')
+          throw new Error("รูปแบบข้อมูลรายการสั่งซื้อไม่ถูกต้อง");
         }
 
-        this.orders = result
+        this.orders = result;
       } catch (error) {
-        console.error(
-          'Fetch orders error:',
-          error.response?.data || error
-        )
+        console.error("Fetch orders error:", error.response?.data || error);
         this.error =
-          error.response?.data?.message ||
-          'ไม่สามารถโหลดรายการสั่งซื้อได้'
+          error.response?.data?.message || "ไม่สามารถโหลดรายการสั่งซื้อได้";
       } finally {
-        this.loading = false
+        this.loading = false;
       }
     },
 
     getProductImage(item) {
-      const image = item.image
+      const image = item.image;
 
       if (!image) {
-        return 'https://placehold.co/300x300?text=Product'
+        return "https://placehold.co/300x300?text=Product";
       }
 
-      if (image.startsWith('http')) {
-        return image
+      if (image.startsWith("http")) {
+        return image;
       }
 
-      return `http://localhost:3000${
-        image.startsWith('/') ? '' : '/'
-      }${image}`
+      return `http://localhost:3000${image.startsWith("/") ? "" : "/"}${image}`;
     },
 
     formatPrice(value) {
-      return Number(value || 0).toLocaleString('th-TH', {
-        style: 'currency',
-        currency: 'THB',
+      return Number(value || 0).toLocaleString("th-TH", {
+        style: "currency",
+        currency: "THB",
         maximumFractionDigits: 2,
-      })
+      });
     },
 
     formatDate(value) {
       if (!value) {
-        return 'ไม่ระบุวันที่'
+        return "ไม่ระบุวันที่";
       }
 
-      const date = new Date(value)
+      const date = new Date(value);
 
       if (Number.isNaN(date.getTime())) {
-        return 'ไม่ระบุวันที่'
+        return "ไม่ระบุวันที่";
       }
 
-      return date.toLocaleString('th-TH')
+      return date.toLocaleString("th-TH");
+    },
+
+    // ซื้อสินค้าอีกครั้ง
+    async buyAgain(order) {
+      try {
+        if (!getCartKey()) {
+          this.$toast("กรุณาเข้าสู่ระบบก่อนเพิ่มสินค้าลงตะกร้า", "error");
+          return;
+        }
+
+        const cart = getCart();
+
+        for (const item of order.items) {
+          // ค้นหาสินค้าจากรหัสสินค้า
+          const response = await productService.getAll();
+
+          const result = response.data;
+          const products = result.data || result;
+
+          const product = products.find(
+            (p) => String(p.code) === String(item.productCode),
+          );
+
+          if (!product) {
+            console.warn("ไม่พบสินค้า:", item.productCode);
+            continue;
+          }
+
+          // ตรวจสอบว่ามีสินค้าในตะกร้าแล้วหรือยัง
+          const existingItem = cart.find(
+            (p) => String(p.id) === String(product._id),
+          );
+
+          if (existingItem) {
+            existingItem.quantity += Number(item.quantity);
+          } else {
+            cart.push({
+              id: product._id,
+              code: product.code,
+              productCode: product.code,
+              productname: product.productname,
+              productdetail: product.productdetail,
+              price: Number(product.price),
+              amount: Number(product.amount),
+              image: product.image,
+              quantity: Number(item.quantity),
+            });
+          }
+        }
+
+        if (!saveCart(cart)) {
+          throw new Error("ไม่สามารถบันทึกตะกร้าสินค้าได้");
+        }
+
+        this.cart = cart;
+
+        // แจ้งส่วนอื่นของระบบว่าตะกร้ามีการเปลี่ยนแปลง
+        window.dispatchEvent(new Event("cart-updated"));
+        this.$root.$emit("cart-updated");
+
+        // ไปหน้าตะกร้าสินค้า
+        this.$router.push("/cart");
+      } catch (error) {
+        console.error("Buy again error:", error);
+        this.$toast("ไม่สามารถเพิ่มสินค้าลงตะกร้าได้", "error");
+      }
     },
   },
-}
+};
 </script>
 
 <style src="../assets/css/theme-pages.css"></style>

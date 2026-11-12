@@ -93,6 +93,7 @@
 
 <script>
 import { getToken, Logout } from "@/services/auth";
+import { getCart } from "@/services/cartStorage";
 
 export default {
   data() {
@@ -130,14 +131,17 @@ export default {
     },
 
     refreshCart() {
-      try {
-        const cart = JSON.parse(localStorage.getItem("cart") || "[]");
+      if (!getToken()) {
+        this.cartCount = 0;
+        return;
+      }
 
-        this.cartCount = Array.isArray(cart)
-          ? cart.reduce((total, item) => {
-              return total + Number(item.quantity || 0);
-            }, 0)
-          : 0;
+      try {
+        const cart = getCart();
+
+        this.cartCount = cart.reduce((total, item) => {
+          return total + Number(item.quantity || 0);
+        }, 0);
       } catch (error) {
         this.cartCount = 0;
       }
@@ -147,6 +151,8 @@ export default {
       Logout();
       this.isLoggedIn = false;
       this.isAdmin = false;
+      this.cartCount = 0;
+      
       this.$router.replace("/login");
     },
   },

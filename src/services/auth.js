@@ -78,7 +78,8 @@ export function isAuthenticated() {
 }
 
 export function Logout() {
-  localStorage.removeItem('token'),
-  localStorage.removeItem('role'),
+  localStorage.removeItem('token')
+  localStorage.removeItem('role')
   localStorage.removeItem('userProfile')
+  localStorage.removeItem('cart')
 }

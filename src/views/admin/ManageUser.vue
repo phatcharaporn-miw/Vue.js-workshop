@@ -3,7 +3,7 @@
     <div class="ani-head">
       <div>
         <h1 class="ani-head-title">ผู้ใช้ทั้งหมด</h1>
-        <p class="ani-head-sub my-6">จัดการบัญชีผู้ใช้ทั่วไป</p>
+        <p class="ani-head-sub my-5">จัดการบัญชีผู้ใช้ทั่วไป</p>
       </div>
       <v-spacer />
       <v-btn color="primary" large depressed class="text-none mb-2" @click="openCreateDialog">
@@ -12,35 +12,59 @@
       </v-btn>
     </div>
 
-    <v-alert v-if="error" type="error" outlined>
+    <v-alert v-if="error" type="error" dense text border="left" class="mb-6">
       {{ error }}
     </v-alert>
 
-    <v-text-field
-      v-model="search"
-      label="ค้นหาชื่อหรือนามสกุล"
-      prepend-inner-icon="mdi-magnify"
-      clearable
-      outlined
-      dense
-      class="mb-4"
-    />
+    <v-card flat class="ani-card ani-table-wrap">
+      <div class="ani-card-head">
+        <div class="ani-dot"><v-icon>mdi-account-multiple-outline</v-icon></div>
+        <div>
+          <div>รายการผู้ใช้</div>
+          <div class="ani-muted" style="font-size:12px;font-weight:500">
+            ดูและจัดการบัญชีผู้ใช้ทั่วไปในระบบ
+          </div>
+        </div>
+        <v-spacer />
+        <span class="ani-pill-chip">{{ filteredUsers.length }} บัญชี</span>
+      </div>
 
-    <v-card outlined>
+      <div class="px-4 pt-4">
+        <v-text-field
+          v-model="search"
+          label="ค้นหาชื่อหรือนามสกุล"
+          prepend-inner-icon="mdi-magnify"
+          clearable
+          outlined
+          dense
+          hide-details
+          class="mb-0"
+        />
+      </div>
+
       <v-data-table
         :headers="headers"
         :items="filteredUsers"
         :loading="loading"
         loading-text="กำลังโหลดรายชื่อผู้ใช้..."
         no-data-text="ไม่พบผู้ใช้"
-        class="elevation-0"
+        :items-per-page="10"
+        :footer-props="{
+          'items-per-page-options': [5, 10, 20, 50],
+          'items-per-page-text': 'จำนวนต่อหน้า'
+        }"
       >
         <template slot="item.name" slot-scope="props">
-          {{ getUserName(props.item) }}
+          <div class="d-flex align-center py-2">
+            <div class="ani-thumb-box mr-3">
+              <v-icon small>mdi-account-outline</v-icon>
+            </div>
+            <div class="ani-name">{{ getUserName(props.item) }}</div>
+          </div>
         </template>
 
         <template slot="item.role" slot-scope="props">
-          {{ formatRole(props.item.role) }}
+          <span class="ani-stock-chip ok">{{ formatRole(props.item.role) }}</span>
         </template>
 
         <template slot="item.actions" slot-scope="props">
